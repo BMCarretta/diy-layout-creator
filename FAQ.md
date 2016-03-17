@@ -1,0 +1,12 @@
+  * **App runs but no components are shown in the toolbox. What should I do?**<br><br>Go to the main app directory where <b>diylc.jar</b> is located and make sure that <b>library</b> directory exists and that it contains <b>main.jar</b> at the minimum. If that's OK, make sure that the application is running with the current directory set to the main app directory (<b>diylc3</b> typically). If the problem persists, create an <a href='http://code.google.com/p/diy-layout-creator/issues/entry'>issue</a> with the most recent log file from <b>log</b> directory attached.</li></ul>
+
+  * **I'm getting `java.lang.UnsupportedClassVersionError: Bad version number in .class file` error, what does it mean?**<br><br>It means that you're running the app with an older version of Java. Version should be 1.6.0_10 or newer. If you have multiple versions installed, make sure that a suitable one is set as default. To check the version of default Java VM, type <code>java -version</code> in the console. To force the <b>Mac</b> to use 1.6, you can either open the Java Preferences app in the Utilities folder and change the order in which the Java versions are used. 1.6.0_xx needs to be first in the list. The other solution is to modify run.sh file to look something like this<br>
+<pre><code>export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home<br>
+export JAVA=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Commands/java<br>
+java -Xms512m -Xmx1024m -cp diylc.jar:lib org.diylc.DIYLCStarter<br>
+</code></pre>
+Note that path to your java 1.6 may be different.</li></ul>
+
+  * **Saving to a file doesn't do anything - busy cursor appears but nothing happens. What can I do?**<br><br>This is a Java bug that occurred in version 1.6.17 and hasn't been fixed yet. The best thing to do is to downgrade to any version between 1.6.10 and 1.6.16 and set the older version as default. It's not a problem to have multiple versions installed, but the old one needs to be default when running DIYLC.</li></ul>
+
+  * **What do those check boxes on the right side of the component editor do?**<br><br>They are used to set default values for the selected component(s). When checked, value on the left of the box will be used as a default for all components of that type.
